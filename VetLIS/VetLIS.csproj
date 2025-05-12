@@ -48,11 +48,15 @@
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Compile Remove="error_log\**" />
+    <Compile Remove="packages\**" />
     <Content Remove="$(SpaRoot)**" />
     <Content Remove="error_log\**" />
+    <Content Remove="packages\**" />
     <EmbeddedResource Remove="error_log\**" />
+    <EmbeddedResource Remove="packages\**" />
     <None Remove="$(SpaRoot)**" />
     <None Remove="error_log\**" />
+    <None Remove="packages\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
   <ItemGroup>

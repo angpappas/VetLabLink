@@ -11,7 +11,6 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 import { Line } from "react-chartjs-2";
 import { FileSearchOutlined, LeftCircleFilled, PrinterFilled, RightCircleFilled } from "@ant-design/icons";
 import EditableDescription from "./EditableDescriptions";
-import MessageInspectionModal from "../ui/MessageInspectionModal";
 
 const imgConverter = require("image-converter-pro");
 
@@ -25,7 +24,6 @@ const HematologyDetails: React.FC = (props) => {
     const location = useLocation();
     const [message, setMessage] = useState<HematologyDataType | null>(null);
     const [messageForInspection, setMessageForInspection] = useState<string | null>(null);
-    const [found, setFound] = useState<boolean>(true);
     const context = useAppDataContext();
     const [alertVisible, setAlertVisible] = useState({
         isOpen: false,
@@ -901,10 +899,6 @@ const HematologyDetails: React.FC = (props) => {
 
     const hasNext = () => nextPreviousId?.next;
 
-    if (!found) {
-        return <div>Not found!</div>;
-    }
-
     if (!message) {
         return <div>Loading</div>;
     }
@@ -976,14 +970,6 @@ const HematologyDetails: React.FC = (props) => {
                             <Button href={`${location.pathname}?pdf`} target="_blank">
                                 <PrinterFilled />
                                 Print
-                            </Button>
-                            <Button
-                                style={{ margin: "0 10px" }}
-                                type="default"
-                                title="Send for inspection"
-                                onClick={() => setMessageForInspection(message.hl7)}
-                            >
-                                <FileSearchOutlined></FileSearchOutlined> Send for inspection
                             </Button>
                             <Link to="/hematology">Back</Link>
                         </>
@@ -1111,7 +1097,6 @@ const HematologyDetails: React.FC = (props) => {
                     </Button>
                 </Space>
             </div>
-            {messageForInspection && <MessageInspectionModal message={messageForInspection} onCloseCallback={() => setMessageForInspection(null)} />}
         </>
     );
 };

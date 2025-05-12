@@ -49,14 +49,18 @@
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Compile Remove="error_log\**" />
     <Compile Remove="packages\**" />
+    <Compile Remove="vet-lis\build\**" />
     <Content Remove="$(SpaRoot)**" />
     <Content Remove="error_log\**" />
     <Content Remove="packages\**" />
+    <Content Remove="vet-lis\build\**" />
     <EmbeddedResource Remove="error_log\**" />
     <EmbeddedResource Remove="packages\**" />
+    <EmbeddedResource Remove="vet-lis\build\**" />
     <None Remove="$(SpaRoot)**" />
     <None Remove="error_log\**" />
     <None Remove="packages\**" />
+    <None Remove="vet-lis\build\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +68,62 @@
   </ItemGroup>
   <ItemGroup>
     <Content Remove="stylecop.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="vet-lis\build\android-icon-144x144.png" />
+    <None Remove="vet-lis\build\android-icon-192x192.png" />
+    <None Remove="vet-lis\build\android-icon-36x36.png" />
+    <None Remove="vet-lis\build\android-icon-48x48.png" />
+    <None Remove="vet-lis\build\android-icon-72x72.png" />
+    <None Remove="vet-lis\build\android-icon-96x96.png" />
+    <None Remove="vet-lis\build\apple-icon-114x114.png" />
+    <None Remove="vet-lis\build\apple-icon-120x120.png" />
+    <None Remove="vet-lis\build\apple-icon-144x144.png" />
+    <None Remove="vet-lis\build\apple-icon-152x152.png" />
+    <None Remove="vet-lis\build\apple-icon-180x180.png" />
+    <None Remove="vet-lis\build\apple-icon-57x57.png" />
+    <None Remove="vet-lis\build\apple-icon-60x60.png" />
+    <None Remove="vet-lis\build\apple-icon-72x72.png" />
+    <None Remove="vet-lis\build\apple-icon-76x76.png" />
+    <None Remove="vet-lis\build\apple-icon-precomposed.png" />
+    <None Remove="vet-lis\build\apple-icon.png" />
+    <None Remove="vet-lis\build\asset-manifest.json" />
+    <None Remove="vet-lis\build\browserconfig.xml" />
+    <None Remove="vet-lis\build\favicon-16x16.png" />
+    <None Remove="vet-lis\build\favicon-32x32.png" />
+    <None Remove="vet-lis\build\favicon-96x96.png" />
+    <None Remove="vet-lis\build\favicon.ico" />
+    <None Remove="vet-lis\build\fonts\LICENSE.txt" />
+    <None Remove="vet-lis\build\fonts\Roboto-Black.ttf" />
+    <None Remove="vet-lis\build\fonts\Roboto-BlackItalic.ttf" />
+    <None Remove="vet-lis\build\fonts\Roboto-Bold.ttf" />
+    <None Remove="vet-lis\build\fonts\Roboto-BoldItalic.ttf" />
+    <None Remove="vet-lis\build\fonts\Roboto-Italic.ttf" />
+    <None Remove="vet-lis\build\fonts\Roboto-Light.ttf" />
+    <None Remove="vet-lis\build\fonts\Roboto-LightItalic.ttf" />
+    <None Remove="vet-lis\build\fonts\Roboto-Medium.ttf" />
+    <None Remove="vet-lis\build\fonts\Roboto-MediumItalic.ttf" />
+    <None Remove="vet-lis\build\fonts\Roboto-Regular.ttf" />
+    <None Remove="vet-lis\build\fonts\Roboto-Thin.ttf" />
+    <None Remove="vet-lis\build\fonts\Roboto-ThinItalic.ttf" />
+    <None Remove="vet-lis\build\index.html" />
+    <None Remove="vet-lis\build\manifest.json" />
+    <None Remove="vet-lis\build\ms-icon-144x144.png" />
+    <None Remove="vet-lis\build\ms-icon-150x150.png" />
+    <None Remove="vet-lis\build\ms-icon-310x310.png" />
+    <None Remove="vet-lis\build\ms-icon-70x70.png" />
+    <None Remove="vet-lis\build\robots.txt" />
+    <None Remove="vet-lis\build\static\css\main.1add81d0.css" />
+    <None Remove="vet-lis\build\static\css\main.1add81d0.css.map" />
+    <None Remove="vet-lis\build\static\js\787.ea8f4596.chunk.js" />
+    <None Remove="vet-lis\build\static\js\787.ea8f4596.chunk.js.map" />
+    <None Remove="vet-lis\build\static\js\main.cefcc2c1.js" />
+    <None Remove="vet-lis\build\static\js\main.cefcc2c1.js.LICENSE.txt" />
+    <None Remove="vet-lis\build\static\js\main.cefcc2c1.js.map" />
+    <None Remove="vet-lis\build\static\js\main.d4bfdd99.js" />
+    <None Remove="vet-lis\build\static\js\main.d4bfdd99.js.LICENSE.txt" />
+    <None Remove="vet-lis\build\static\js\main.d4bfdd99.js.map" />
+    <None Remove="vet-lis\build\static\media\logo-inverted.e28e93df9dd072c5c66eeea5a2f43012.svg" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />

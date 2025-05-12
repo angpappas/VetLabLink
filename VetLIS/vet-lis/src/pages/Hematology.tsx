@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 import { ErrorMessage } from "../models/ErrorMessage";
 import { DeleteFilled, EyeTwoTone, SearchOutlined, FileSearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
-import MessageInspectionModal from "../ui/MessageInspectionModal";
 
 interface TableParams {
     pagination?: TablePaginationConfig;
@@ -24,7 +23,6 @@ type DataIndex = keyof HematologyDataType;
 const Hematology: React.FC = (props) => {
     const context = useAppDataContext();
     const category = 1;
-    const [messageForInspection, setMessageForInspection] = useState<string | null>(null);
     const [searchText, setSearchText] = useState("");
     const [searchedColumn, setSearchedColumn] = useState("");
     const searchInput = useRef<InputRef>(null);
@@ -276,9 +274,6 @@ const Hematology: React.FC = (props) => {
                     <Button type="default" onClick={() => deleteMessage(record.id)} danger>
                         <DeleteFilled />
                     </Button>
-                    <Button type="default" title="Send for inspection" onClick={() => setMessageForInspection(record.hl7)}>
-                        <FileSearchOutlined></FileSearchOutlined>
-                    </Button>
                 </Space>
             )
         }
@@ -424,8 +419,6 @@ const Hematology: React.FC = (props) => {
                     loading={loading}
                 />
             )}
-
-            {messageForInspection && <MessageInspectionModal message={messageForInspection} onCloseCallback={() => setMessageForInspection(null)} />}
         </div>
     );
 };

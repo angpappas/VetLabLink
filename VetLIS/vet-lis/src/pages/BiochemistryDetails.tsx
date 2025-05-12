@@ -5,11 +5,10 @@ import useAppDataContext from "../state/AppContext";
 import { BiochemistryDataType, readBiochemistry } from "../models/Hl7Parser";
 import { Alert, Button, Descriptions, Space } from "antd";
 import { Typography } from "antd";
-import { FileSearchOutlined, LeftCircleFilled, PrinterFilled, RightCircleFilled } from "@ant-design/icons";
+import { LeftCircleFilled, PrinterFilled, RightCircleFilled } from "@ant-design/icons";
 import EditableDescription from "./EditableDescriptions";
 import { Page, Text as TextPdf, View, Document, StyleSheet, Font, Image } from "@react-pdf/renderer";
 import { PDFViewer } from "@react-pdf/renderer";
-import MessageInspectionModal from "../ui/MessageInspectionModal";
 
 const { Text } = Typography;
 const category = 2;
@@ -17,9 +16,7 @@ const category = 2;
 const BiochemistryDetails: React.FC = (props) => {
     const { messageId } = useParams();
     const location = useLocation();
-    const [messageForInspection, setMessageForInspection] = useState<string | null>(null);
     const [message, setMessage] = useState<BiochemistryDataType | null>(null);
-    const [found, setFound] = useState<boolean>(true);
     const context = useAppDataContext();
     const [alertVisible, setAlertVisible] = useState({
         isOpen: false,
@@ -362,10 +359,6 @@ const BiochemistryDetails: React.FC = (props) => {
 
     const hasNext = () => nextPreviousId?.next;
 
-    if (!found) {
-        return <div>Not found!</div>;
-    }
-
     if (!message) {
         return <div>Loading</div>;
     }
@@ -409,14 +402,6 @@ const BiochemistryDetails: React.FC = (props) => {
                             <Button href={`${location.pathname}?pdf`} target="_blank">
                                 <PrinterFilled />
                                 Print
-                            </Button>
-                            <Button
-                                style={{ margin: "0 10px" }}
-                                type="default"
-                                title="Send for inspection"
-                                onClick={() => setMessageForInspection(message.hl7)}
-                            >
-                                <FileSearchOutlined></FileSearchOutlined> Send for inspection
                             </Button>
                             <Link to="/biochemistry">Back</Link>
                         </>
@@ -536,8 +521,6 @@ const BiochemistryDetails: React.FC = (props) => {
                     </Button>
                 </Space>
             </div>
-
-            {messageForInspection && <MessageInspectionModal message={messageForInspection} onCloseCallback={() => setMessageForInspection(null)} />}
         </>
     );
 };

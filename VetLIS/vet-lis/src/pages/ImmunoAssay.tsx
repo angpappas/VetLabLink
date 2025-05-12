@@ -7,9 +7,8 @@ import { Hl7Message } from "../models/Hl7Message";
 import { ImmunoAssayDataType, readImmunoassay } from "../models/Hl7Parser";
 import { ErrorMessage } from "../models/ErrorMessage";
 import { Link } from "react-router-dom";
-import { DeleteFilled, EyeTwoTone, FileSearchOutlined, SearchOutlined } from "@ant-design/icons";
+import { DeleteFilled, EyeTwoTone, SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
-import MessageInspectionModal from "../ui/MessageInspectionModal";
 
 interface TableParams {
     pagination?: TablePaginationConfig;
@@ -20,10 +19,9 @@ interface TableParams {
 
 type DataIndex = keyof ImmunoAssayDataType;
 
-const ImmunoAssay: React.FC = (props) => {
+const ImmunoAssay: React.FC = () => {
     const context = useAppDataContext();
     const category = 3;
-    const [messageForInspection, setMessageForInspection] = useState<string | null>(null);
     const [searchText, setSearchText] = useState("");
     const [searchedColumn, setSearchedColumn] = useState("");
     const searchInput = useRef<InputRef>(null);
@@ -276,9 +274,6 @@ const ImmunoAssay: React.FC = (props) => {
                     <Button onClick={() => deleteMessage(record.id)} type="default" danger>
                         <DeleteFilled style={{ color: "red" }} />
                     </Button>
-                    <Button type="default" title="Send for inspection" onClick={() => setMessageForInspection(record.hl7)}>
-                        <FileSearchOutlined></FileSearchOutlined>
-                    </Button>
                 </Space>
             )
         }
@@ -424,8 +419,6 @@ const ImmunoAssay: React.FC = (props) => {
                     loading={loading}
                 />
             )}
-
-            {messageForInspection && <MessageInspectionModal message={messageForInspection} onCloseCallback={() => setMessageForInspection(null)} />}
         </div>
     );
 };

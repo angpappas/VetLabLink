@@ -28,15 +28,13 @@ public class Program
 
         var builder = WebApplication.CreateBuilder(args);
 
-        var sourceDbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AppData", "vetlis.db");
-        var targetDbPath = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "VetLabLink", "vetlis.db");
-        if (!File.Exists(targetDbPath))
+        var dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AppData", "vetlis.db");
+        if (!File.Exists(dbPath))
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(targetDbPath));
-            File.Copy(sourceDbPath, targetDbPath);
+            Directory.CreateDirectory(Path.GetDirectoryName(dbPath)!);
         }
 
-        var connectionString = $"Data Source={targetDbPath}";
+        var connectionString = $"Data Source={dbPath}";
 
         builder.Services.AddControllersWithViews();
 

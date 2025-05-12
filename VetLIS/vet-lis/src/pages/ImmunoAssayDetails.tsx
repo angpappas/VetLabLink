@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { Hl7Message, MessageDetails } from "../models/Hl7Message";
+import { MessageDetails } from "../models/Hl7Message";
 import useAppDataContext from "../state/AppContext";
 import { ImmunoAssayDataType, readImmunoassay } from "../models/Hl7Parser";
 import { Alert, Button, Descriptions, Space } from "antd";
@@ -9,7 +9,6 @@ import { FileSearchOutlined, LeftCircleFilled, PrinterFilled, RightCircleFilled 
 import EditableDescription from "./EditableDescriptions";
 import { Page, Text as TextPdf, View, Document, StyleSheet, Font, Image } from "@react-pdf/renderer";
 import { PDFViewer } from "@react-pdf/renderer";
-import MessageInspectionModal from "../ui/MessageInspectionModal";
 
 const { Text } = Typography;
 const category = 3;
@@ -19,7 +18,6 @@ const ImmunoAssayDetails: React.FC = (props) => {
     const location = useLocation();
     const [message, setMessage] = useState<ImmunoAssayDataType | null>(null);
     const [messageForInspection, setMessageForInspection] = useState<string | null>(null);
-    const [found, setFound] = useState<boolean>(true);
     const context = useAppDataContext();
     const [alertVisible, setAlertVisible] = useState({
         isOpen: false,
@@ -375,10 +373,6 @@ const ImmunoAssayDetails: React.FC = (props) => {
 
     const hasNext = () => nextPreviousId?.next;
 
-    if (!found) {
-        return <div>Not found!</div>;
-    }
-
     if (!message) {
         return <div>Loading</div>;
     }
@@ -422,14 +416,6 @@ const ImmunoAssayDetails: React.FC = (props) => {
                             <Button href={`${location.pathname}?pdf`} target="_blank">
                                 <PrinterFilled />
                                 Print
-                            </Button>
-                            <Button
-                                style={{ margin: "0 10px" }}
-                                type="default"
-                                title="Send for inspection"
-                                onClick={() => setMessageForInspection(message.hl7)}
-                            >
-                                <FileSearchOutlined></FileSearchOutlined> Send for inspection
                             </Button>
                             <Link to="/immunoassay">Back</Link>
                         </>
@@ -548,7 +534,6 @@ const ImmunoAssayDetails: React.FC = (props) => {
                     </Button>
                 </Space>
             </div>
-            {messageForInspection && <MessageInspectionModal message={messageForInspection} onCloseCallback={() => setMessageForInspection(null)} />}
         </>
     );
 };

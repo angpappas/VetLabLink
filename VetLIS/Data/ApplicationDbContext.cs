@@ -28,8 +28,7 @@ namespace VetLIS.Data
         {
             base.OnConfiguring(optionsBuilder);
 
-            var targetDbPath = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "VetLabLink", "vetlis.db");
-            var connectionString = $"Data Source={targetDbPath}";
+            var connectionString = $"Data Source=AppData\\vetlis.db";
 
             optionsBuilder.UseSqlite(connectionString);
         }

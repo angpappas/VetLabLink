@@ -88,7 +88,7 @@ const DashboardLayout: React.FC<Props> = (props) => {
                     </Content>
                 </Layout>
             </Layout>
-            <Footer style={{ textAlign: "center" }}>Copyright {new Date().getFullYear()}</Footer>
+            <Footer style={{ textAlign: "center" }}>VetLabLink {new Date().getFullYear()}</Footer>
         </Layout>
     );
 };

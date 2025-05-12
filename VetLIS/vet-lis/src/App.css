@@ -1,0 +1,18 @@
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    height: 64px;
+}
+
+.logo img {
+    margin: 10px 10px 10px 0;
+}
+
+.logo small {
+    font-size: 1em;
+    font-weight: normal;
+    color: #ccc;
+    margin-left: 10px;
+}

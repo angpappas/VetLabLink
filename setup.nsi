@@ -1,3 +1,5 @@
+RequestExecutionLevel user
+
 ; Define the name of the installer
 OutFile "VetLabLinkSetup.exe"
 
@@ -6,6 +8,13 @@ InstallDir "$APPDATA\VetLabLink"
 
 ; Set the source directory
 !define SOURCE_DIR "setup"
+
+; Show the license page with the MIT license
+LicenseData "LICENSE.txt"
+
+Page license
+Page directory
+Page instfiles
 
 ; Define the sections
 Section "Install"
@@ -30,6 +39,8 @@ Section "Install"
 
   ; Ensure the directory for the database file exists
   CreateDirectory "$APPDATA\VetLabLink"
+
+  Exec '"$INSTDIR\VetLabLink\VetLabLink.exe"'
 
 SectionEnd
 
